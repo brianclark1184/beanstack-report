@@ -1,0 +1,14 @@
+node_modules/
+tmp/
+output/
+*.log
+
+# Personal reading records stay local.
+august_2026_entries.json
+
+# Local credentials and Python build artifacts.
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.venv/

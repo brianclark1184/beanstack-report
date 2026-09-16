@@ -1,0 +1,63 @@
+READING LOG FOR BEANSTACK — PRIVATE BETA 0.1.0
+
+INSTALL (Chrome on a personal Windows or Mac computer)
+1. Extract the entire ZIP into a permanent folder, such as Documents/Reading Log.
+2. Open chrome://extensions in Chrome.
+3. Turn on Developer mode (upper right).
+4. Click Load unpacked and select the extracted folder containing manifest.json.
+5. In Chrome's puzzle-piece Extensions menu, pin Reading Log for Beanstack.
+Keep the folder in place. School-managed browsers may disallow developer mode.
+
+USE
+1. Sign in to your school/library Beanstack site normally.
+2. Select the intended reader, then Reading Log and Calendar view.
+3. Click the Reading Log extension icon. Keep the Beanstack tab open.
+4. Enter Student, Teacher, and Class. Edit the nightly/monthly goals if needed.
+5. Click Use reader: [name] to link this profile. Check the name, then Save profile.
+6. To add another Student / Teacher / Class triplet, click New and repeat.
+   Several triplets may use the same reader, with different classes and goals.
+7. Choose the export month and click Read from Beanstack. This changes the month
+   displayed in the Beanstack tab. Do not switch readers while it is loading.
+8. Check the entries. Click Preview PDF or Download PDF for this one profile.
+   Preview and Download also save your profile edits.
+
+CHANGING STUDENTS
+Select the next reader in Beanstack and click the extension icon again.
+The extension remembers the Beanstack reader and school/library site per profile.
+If several profiles share the same reader, choose the desired teacher/class.
+It blocks export when the selected profile is linked to a different reader.
+
+WHAT THE LOG CONTAINS
+One row per Beanstack entry, including separate sessions for the same book/day.
+Completion-only and other entries without recorded minutes show a dash and their
+status beside the title. They do not add minutes to the total.
+The PDF uses Letter paper, editable goals, and at least two pages, with blank
+rows and extra continuation pages as needed. It includes only the selected month.
+
+PRIVACY
+No AI key, subscription, or backend. Profiles are stored locally in this Chrome
+profile. Reading entries remain in the open extension tab's memory. Downloaded
+PDFs stay on your computer. No student data is included in the distributed ZIP.
+See privacy.html for details. This is an independent, unofficial Beanstack tool.
+
+UPDATES
+Close Reading Log editor tabs after saving any profile changes. Extract the new
+ZIP and copy its contents over the SAME permanent extension folder. Open
+chrome://extensions and click the extension's Reload button. Keep the same
+folder path and do not remove/reinstall the extension if you want to keep profiles.
+Unpacked extensions do not update automatically.
+
+TROUBLESHOOTING
+- No access: return to the intended Beanstack calendar and click the icon again.
+- Unsupported page: Calendar view is required; List and All Titles are not read.
+- Wrong reader: switch the reader in Beanstack, then click the icon again.
+- No entries: check the month and reader. Empty months cannot be exported.
+- Slow month navigation: wait for Beanstack, then click Read from Beanstack again.
+- More than two years away: navigate closer in Beanstack before using the tool.
+- Missing fonts/PDF library: extract ALL ZIP contents; do not load one file alone.
+
+TESTING STATUS
+Beta: tested against the Gilchrist Beanstack calendar structure and local UI/PDF
+tests. Other Beanstack layouts and managed school browsers may need adjustments.
+Native Chrome installation and extension permission wiring still need a manual
+smoke test; browser automation could not access Chrome's extension-management UI.

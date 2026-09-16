@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reading Log for Beanstack</title><link rel="stylesheet" href="app.css"></head>
+<body>
+  <header><div class="brand"><span class="book" aria-hidden="true">▤</span><div><strong>Reading Log</strong><small>FOR BEANSTACK · PRIVATE BETA</small></div></div><span class="local">Saved on this computer</span></header>
+  <main>
+    <div class="intro"><p class="eyebrow">FROM READING TIME TO PAPER</p><h1>A month of stories,<br>a log ready to print.</h1><p>Choose a student profile, read a month from Beanstack, and make your school reading log.</p></div>
+    <div id="status" role="status" aria-live="polite">Connecting to your Beanstack calendar…</div>
+    <div class="layout">
+      <section class="card profiles"><h2>1. Student profile</h2>
+        <label for="profiles">Saved Student / Teacher / Class</label><select id="profiles"><option value="">New profile</option></select>
+        <form id="profile-form">
+          <label for="student">Student</label><input id="student" maxlength="120" required autocomplete="off">
+          <label for="teacher">Teacher</label><input id="teacher" maxlength="120" required autocomplete="off">
+          <label for="className">Class</label><input id="className" maxlength="120" required autocomplete="off">
+          <div class="two"><div><label for="dailyGoal">Nightly goal (minutes)</label><input id="dailyGoal" type="number" min="1" max="100000" step="1" required value="20"></div><div><label for="monthlyGoal">Monthly goal (minutes)</label><input id="monthlyGoal" type="number" min="1" max="100000" step="1" required value="300"></div></div>
+          <div class="reader"><span class="eyebrow">LINKED BEANSTACK READER</span><p id="linked-reader">No reader linked yet.</p><button id="link-reader" type="button" class="secondary" disabled>Use current Beanstack reader</button></div>
+          <div class="actions"><button id="save-profile" type="submit">Save profile</button><button id="new-profile" type="button" class="secondary">New</button><button id="delete-profile" type="button" class="text-button" disabled>Delete</button></div>
+        </form>
+        <p class="hint">Each profile remembers its goals and reader. Reading entries stay in this tab until you close it.</p>
+      </section>
+      <section class="card history"><div class="section-heading"><h2>2. Monthly reading</h2><span id="month-badge" class="badge">Not loaded</span></div>
+        <div class="month-actions"><div><label for="month">Month to export</label><input id="month" type="month" required></div><button id="read-month" class="secondary" disabled>Read from Beanstack</button></div>
+        <p id="source" class="hint">Open Beanstack’s Reading Log in Calendar view, then click the extension icon. Keep that tab open.</p>
+        <div class="totals"><div><strong id="entry-count">—</strong><span>entries</span></div><div><strong id="minute-count">—</strong><span>recorded minutes</span></div></div>
+        <p id="entry-note" class="hint">One row per entry. Repeated sessions are kept separate.</p>
+        <div class="table-wrap"><table><thead><tr><th scope="col">Date</th><th scope="col">Book title</th><th scope="col">Minutes</th></tr></thead><tbody id="entries"></tbody></table><p id="empty" class="empty">Your reading entries will appear here.</p></div>
+        <div class="export-actions"><button id="preview" class="secondary" disabled>Preview PDF</button><button id="download" disabled>Download PDF</button></div>
+        <p class="hint">Letter size · At least two pages · Student, teacher, class, and goals included</p>
+      </section>
+    </div>
+    <footer>No OpenAI key, subscription, or account required for this extension. Use your existing Beanstack login.<br>Independent tool; not affiliated with Beanstack. <a href="privacy.html" target="_blank">Privacy &amp; permissions</a></footer>
+  </main>
+  <dialog id="pdf-dialog"><div class="dialog-top"><h2>Print-ready preview</h2><button id="close-preview" class="secondary">Close preview</button></div><iframe id="pdf-frame" title="Reading log PDF preview"></iframe></dialog>
+  <dialog id="delete-dialog"><h2>Delete this saved profile?</h2><p>Reading history in Beanstack is unaffected.</p><div class="actions"><button id="confirm-delete">Delete profile</button><button id="cancel-delete" class="secondary">Keep profile</button></div></dialog>
+  <script src="vendor/jspdf.umd.min.js"></script><script type="module" src="app.js"></script>
+</body></html>
