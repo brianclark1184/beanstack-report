@@ -5,16 +5,47 @@ backend, telemetry, or ongoing service costs. Includes a Chrome extension and th
 original standalone Python formatter. Personal reading records are excluded from
 the repository and are not packaged into the extension.
 
-## Install and use
+## Install from the Chrome Web Store
 
-See [extension/START-HERE.txt](extension/START-HERE.txt). Load the `extension` folder
-unpacked for development, or share the ZIP under `output/extension` after running
-`npm run package`. The ZIP contains only files from `extension/`.
+**[Install Reading Log for Beanstack](https://chromewebstore.google.com/detail/cfekcfmecbnbmpekmiinanikdcipnkdf)**
 
-Click the extension icon on the intended reader's Beanstack **Reading Log → Calendar**
-page. The editor captures that month. Save a triplet, explicitly link its reader,
-choose a month, read it, then preview/download one PDF. Goals and reader bindings
-are saved per triplet in `chrome.storage.local`. Entries remain in editor memory.
+**Release status (September 16, 2026):** version 0.1.1 has been submitted and is
+pending Google's review. It will publish automatically after approval. Until then,
+the link above may show an unavailable page and installation will not be possible.
+
+Once the listing is available:
+
+1. Open the installation link above in Google Chrome on your computer.
+2. Click **Add to Chrome**, review the requested permissions, then click
+   **Add extension**.
+3. Open Chrome's **Extensions** menu (the puzzle-piece icon) and pin
+   **Reading Log for Beanstack** for easy access.
+
+The listing is **unlisted**, so use the direct link rather than searching the
+Chrome Web Store. Anyone with the link can install and share it; unlisted does
+not restrict access to particular people. Installation is free, no OpenAI key or
+Developer mode is required, and Chrome manages extension updates.
+
+School- or work-managed browsers may require administrator approval. See
+[Google's extension installation help](https://support.google.com/chrome_webstore/answer/2664769?hl=en)
+if installation is blocked. Saved profiles from an unpacked development copy do
+not automatically transfer to the store installation; enter them again.
+
+## Create a reading log
+
+1. Sign in to your school or library's Beanstack site and select the intended reader.
+2. Open **Reading Log → Calendar**, then click the pinned extension icon.
+   Keep the Beanstack tab open.
+3. Enter the **Student**, **Teacher**, and **Class**, and adjust the reading goals.
+4. Click **Use reader: [name]** to link the displayed reader, then **Save profile**.
+   Use **New** to add more Student / Teacher / Class profiles.
+5. Choose the export month and click **Read from Beanstack**.
+6. Check the entries, then click **Preview PDF** or **Download PDF**.
+
+Each export uses one selected profile. To change students, select the next reader
+in Beanstack and click the extension icon again. If several profiles share a reader,
+select the desired teacher and class in the editor. Profiles and goals are saved
+locally in Chrome; reading entries stay in the open editor tab's memory.
 
 Each entry remains a separate row. Untimed entries, including Completed events,
 have a dash for minutes and a status next to the title. Adjacent calendar months
@@ -37,6 +68,11 @@ are excluded. Repeated identical IDs are deduplicated; distinct sessions are not
   Rows expand for long titles, and continuation pages are added as necessary.
 
 ## Development and checks
+
+For local development, load the `extension` folder unpacked using the instructions
+in [extension/START-HERE.txt](extension/START-HERE.txt). You can also build a ZIP
+under `output/extension` with `npm run package`; it contains only `extension/` files.
+Unpacked copies require manual updates.
 
 Node 24 or newer:
 
