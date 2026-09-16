@@ -31,6 +31,41 @@ School- or work-managed browsers may require administrator approval. See
 if installation is blocked. Saved profiles from an unpacked development copy do
 not automatically transfer to the store installation; enter them again.
 
+## Install from a development ZIP (alternative)
+
+This option works while the Chrome Web Store submission is awaiting approval.
+Use Chrome on a computer; no OpenAI key or build tools are required.
+
+1. [Download the development ZIP](https://github.com/brianclark1184/beanstack-report/archive/refs/heads/codex/unlisted-store.zip),
+   or use a supplied extension package such as `reading-log-beanstack-0.1.1.zip`.
+2. Extract **all** files into a permanent folder, such as
+   `Documents/Reading Log`. On Windows, right-click the ZIP and choose
+   **Extract All**; on macOS, double-click it.
+3. Type `chrome://extensions` into Chrome's address bar and press Enter.
+4. Turn on **Developer mode** in the upper-right corner.
+5. Click **Load unpacked** and select the folder containing `manifest.json`:
+   - For the GitHub development ZIP, select the **extension** folder inside the
+     extracted repository folder.
+   - For the packaged extension ZIP, select the extracted folder itself.
+6. Open Chrome's puzzle-piece **Extensions** menu and pin
+   **Reading Log for Beanstack**, then follow [Create a reading log](#create-a-reading-log)
+   below.
+
+Keep the extracted folder in place: Chrome loads the extension from that folder.
+Select the extracted folder, not the ZIP file. If Chrome reports a missing
+manifest, check that the selected folder directly contains `manifest.json`.
+Managed school or work browsers may block Developer mode or unpacked extensions;
+ask your administrator if these controls are unavailable. See
+[Google's unpacked extension guide](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
+for more detail.
+
+**Updating a ZIP installation:** save your profiles and close open Reading Log
+editor tabs. Extract the new ZIP and copy the extension files into the **same
+permanent extension folder**, replacing the old files. Return to
+`chrome://extensions` and click **Reload** on Reading Log for Beanstack. Unpacked
+extensions do not update automatically. Keep the same folder path and avoid
+removing/reinstalling the extension to preserve saved profiles.
+
 ## Create a reading log
 
 1. Sign in to your school or library's Beanstack site and select the intended reader.
