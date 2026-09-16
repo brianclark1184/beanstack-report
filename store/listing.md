@@ -89,18 +89,26 @@ This extension requires an existing school/library Beanstack reader login. It do
 
 The repository contains a local UI harness and synthetic automated tests for developer validation. These are not included in the installed extension and do not replace a real Beanstack test login.
 
-## Remaining submission steps
+## Remaining release checks
 
-- Register/sign in to the intended Chrome Web Store developer account.
-- Complete publisher account/contact verification and any required registration payment.
-- Add a new item, upload the package, and fill the listing/privacy fields above.
-- Upload the icon, promotional tile, and screenshots.
-- Set Distribution → Visibility to **Unlisted**.
 - Perform an installed-extension smoke test; earlier checks covered live DOM extraction and a local UI harness, not the native toolbar/permission flow.
 - Arrange reviewer test access if requested; do not disclose an existing child's credentials.
-- Submit for review, then verify the resulting store URL and unlisted visibility.
+- After Google approves the submission, verify the resulting store URL and unlisted visibility.
 
-Status: submission materials prepared; no Chrome Web Store item has been created or submitted by this task. The browser connection refused the developer dashboard with “Not allowed.”
+Status (September 16, 2026): developer registration paid and activated. Version
+0.1.1 uploaded as item `cfekcfmecbnbmpekmiinanikdcipnkdf`. Store listing, icon,
+both screenshots, promotional tile, privacy disclosures, and Unlisted/free
+distribution are saved. Concise reviewer instructions are saved; no test
+credentials have been supplied. Submitted for review on September 16, 2026;
+Google confirmed submission and the dashboard shows **Pending review**.
+Automatic publication after passing review is enabled.
+
+Dashboard:
+https://chrome.google.com/webstore/devconsole/f6d3d760-f225-4b3e-b929-6f865d5344ea/cfekcfmecbnbmpekmiinanikdcipnkdf/edit
+
+The publisher approved `bclark@cassinicap.com` as the public contact address.
+Google confirmed this address is verified. Reviewer Beanstack test access and
+the installed-extension smoke test remain outstanding.
 
 The privacy policy is distributed on the `codex/unlisted-store` repository branch.
 Keep that branch available while its URL is used in the store listing. If the
