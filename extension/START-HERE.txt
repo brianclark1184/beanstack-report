@@ -1,6 +1,14 @@
-READING LOG FOR BEANSTACK — PRIVATE BETA 0.1.0
+READING LOG FOR BEANSTACK — BETA 0.1.1
 
-INSTALL (Chrome on a personal Windows or Mac computer)
+CHROME WEB STORE INSTALLATION
+Once the unlisted listing is approved, open its shared store link and choose
+Add to Chrome. No Developer mode is required. Chrome manages store updates.
+Anyone who receives the unlisted link can install; it is not restricted access.
+The Web Store version is a separate installation from the unpacked beta.
+Saved profiles will need to be entered again; they do not transfer automatically.
+The listing has not yet been submitted. The ZIP below also supports local testing.
+
+UNPACKED INSTALL (Chrome on a personal Windows or Mac computer)
 1. Extract the entire ZIP into a permanent folder, such as Documents/Reading Log.
 2. Open chrome://extensions in Chrome.
 3. Turn on Developer mode (upper right).

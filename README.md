@@ -7,6 +7,15 @@ the repository and are not packaged into the extension.
 
 ## Install and use
 
+An unlisted Chrome Web Store submission is being prepared. See
+[store/listing.md](store/listing.md) for listing text, permission explanations,
+images, and remaining submission steps. Version 0.1.1 updates distribution wording
+and privacy materials; no Web Store item has been submitted yet.
+
+Once approved, recipients can install through the shared store link and receive
+Chrome-managed updates. Unlisted means anyone with the link can install. Profiles
+from an unpacked copy do not automatically transfer to the store installation.
+
 See [extension/START-HERE.txt](extension/START-HERE.txt). Load the `extension` folder
 unpacked for development, or share the ZIP under `output/extension` after running
 `npm run package`. The ZIP contains only files from `extension/`.
