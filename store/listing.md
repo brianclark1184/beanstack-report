@@ -6,7 +6,7 @@
 - Price: Free.
 - Language: English (United States).
 - Suggested category: Productivity; choose an appropriate education subcategory if offered.
-- Package: `output/extension/reading-log-beanstack-0.1.1.zip`.
+- Package: `output/extension/reading-log-beanstack-0.1.2.zip`.
 - Icon: `extension/icons/128.png`.
 - Required small promotional tile: `store/assets/promo-440x280.png`.
 - Screenshots: `store/assets/screenshot-profiles-1280x800.png` and
@@ -95,13 +95,21 @@ The repository contains a local UI harness and synthetic automated tests for dev
 - Arrange reviewer test access if requested; do not disclose an existing child's credentials.
 - After Google approves the submission, verify the resulting store URL and unlisted visibility.
 
-Status (September 16, 2026): developer registration paid and activated. Version
-0.1.1 uploaded as item `cfekcfmecbnbmpekmiinanikdcipnkdf`. Store listing, icon,
+Status (September 18, 2026): developer registration paid and activated. Version
+0.1.2 uploaded as item `cfekcfmecbnbmpekmiinanikdcipnkdf`. Store listing, icon,
 both screenshots, promotional tile, privacy disclosures, and Unlisted/free
 distribution are saved. Concise reviewer instructions are saved; no test
-credentials have been supplied. Submitted for review on September 16, 2026;
+credentials have been supplied. Resubmitted for review on September 18, 2026;
 Google confirmed submission and the dashboard shows **Pending review**.
 Automatic publication after passing review is enabled.
+
+Version 0.1.1 was rejected for Blue Argon: the upstream PDF library included an
+unused PDFObject remote-script loader. Version 0.1.2 removes that loader, the
+external PDF.js viewer mode, and optional HTML/SVG dependency loaders. The
+packaged library is generated reproducibly from pinned upstream source; the
+package build checks it and audits extension code for executable loaders.
+All nine tests passed, including offline preview/download and PDF output
+comparison against upstream. The extracted release ZIP passed the code audit.
 
 Dashboard:
 https://chrome.google.com/webstore/devconsole/f6d3d760-f225-4b3e-b929-6f865d5344ea/cfekcfmecbnbmpekmiinanikdcipnkdf/edit

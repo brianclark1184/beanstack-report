@@ -9,9 +9,12 @@ the repository and are not packaged into the extension.
 
 **[Install Reading Log for Beanstack](https://chromewebstore.google.com/detail/cfekcfmecbnbmpekmiinanikdcipnkdf)**
 
-**Release status (September 16, 2026):** version 0.1.1 has been submitted and is
-pending Google's review. It will publish automatically after approval. Until then,
-the link above may show an unavailable page and installation will not be possible.
+**Release status (September 18, 2026):** version 0.1.1 was rejected because an unused
+PDF-library feature could load external code. Version 0.1.2 removes that feature
+and other optional dependency loaders and has been resubmitted. The dashboard
+shows **Pending review**, with automatic publication after approval enabled. Store
+installation will be available after approval. Until then, the link above may
+show an unavailable page; the development ZIP is available below.
 
 Once the listing is available:
 
@@ -37,7 +40,7 @@ This option works while the Chrome Web Store submission is awaiting approval.
 Use Chrome on a computer; no OpenAI key or build tools are required.
 
 1. [Download the development ZIP](https://github.com/brianclark1184/beanstack-report/archive/refs/heads/codex/unlisted-store.zip),
-   or use a supplied extension package such as `reading-log-beanstack-0.1.1.zip`.
+   or use a supplied extension package such as `reading-log-beanstack-0.1.2.zip`.
 2. Extract **all** files into a permanent folder, such as
    `Documents/Reading Log`. On Windows, right-click the ZIP and choose
    **Extract All**; on macOS, double-click it.
@@ -97,8 +100,10 @@ are excluded. Repeated identical IDs are deduplicated; distinct sessions are not
   replacement, with timeouts, a two-year limit, and reader checks.
 - The editor checks origin + reader ID + selected month before export. Profile
   writes merge under a Web Lock so separate editor tabs do not lose other profiles.
-- PDF generation uses bundled jsPDF 4.2.1 and Liberation Sans fonts. No CDN/runtime
-  downloads. Third-party licenses are included alongside those assets.
+- PDF generation uses a reproducible local build of jsPDF 4.2.1 and Liberation
+  Sans fonts. External viewer modes and optional HTML/SVG loaders are removed.
+  See [PDF bundle notes](extension/vendor/JSPDF-BUILD.md). Third-party licenses
+  are included alongside those assets.
 - Letter PDFs keep the original outlined GOAL treatment and minimum two-page format.
   Rows expand for long titles, and continuation pages are added as necessary.
 
@@ -113,6 +118,7 @@ Node 24 or newer:
 
 ```text
 npm ci
+npm run check:extension
 npm test
 npm run package
 ```
@@ -120,6 +126,10 @@ npm run package
 `tests/extension.test.mjs` checks distinct sessions, untimed events, duplicate IDs,
 incomplete calendars, wrong readers/sites/months, navigation, and PDF pagination.
 It writes a synthetic layout PDF to `tmp/extension-test/` for visual inspection.
+PDF tests execute the exact browser bundle shipped in the extension, including
+Blob previews and file downloads with network requests blocked. Packaging checks
+the reproducible vendor build and scans scripts for dynamic code loaders. Run
+`npm run build:vendor` to regenerate the reviewed PDF bundle.
 
 `node scripts/test-server.mjs` serves a local **mock Chrome API UI harness** on
 127.0.0.1:8766 with synthetic records. This verifies the real editor and PDF code,

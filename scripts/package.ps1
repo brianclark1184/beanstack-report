@@ -1,6 +1,10 @@
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $extensionRoot = Join-Path $projectRoot 'extension'
+& node (Join-Path $PSScriptRoot 'build-pdf-vendor.mjs') --check
+if ($LASTEXITCODE -ne 0) { throw 'PDF vendor verification failed.' }
+& node (Join-Path $PSScriptRoot 'check-extension-code.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Extension code audit failed.' }
 $outputRoot = Join-Path $projectRoot 'output\extension'
 $manifest = Get-Content -LiteralPath (Join-Path $extensionRoot 'manifest.json') -Raw | ConvertFrom-Json
 $archivePath = Join-Path $outputRoot "reading-log-beanstack-$($manifest.version).zip"

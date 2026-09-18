@@ -1,4 +1,4 @@
-READING LOG FOR BEANSTACK — BETA 0.1.1
+READING LOG FOR BEANSTACK — BETA 0.1.2
 
 CHROME WEB STORE INSTALLATION
 Once the unlisted listing is approved, open its shared store link and choose
@@ -6,7 +6,10 @@ Add to Chrome. No Developer mode is required. Chrome manages store updates.
 Anyone who receives the unlisted link can install; it is not restricted access.
 The Web Store version is a separate installation from the unpacked beta.
 Saved profiles will need to be entered again; they do not transfer automatically.
-The listing has not yet been submitted. The ZIP below also supports local testing.
+Store listing: https://chromewebstore.google.com/detail/cfekcfmecbnbmpekmiinanikdcipnkdf
+Store installation requires Google's approval. The ZIP below supports local testing.
+Version 0.1.2 removes unused external viewer and optional dependency loaders from
+the bundled PDF library. PDF formatting and reading-log features are unchanged.
 
 UNPACKED INSTALL (Chrome on a personal Windows or Mac computer)
 1. Extract the entire ZIP into a permanent folder, such as Documents/Reading Log.
