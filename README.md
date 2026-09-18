@@ -11,7 +11,8 @@ the repository and are not packaged into the extension.
 
 **Release status (September 18, 2026):** version 0.1.1 was rejected because an unused
 PDF-library feature could load external code. Version 0.1.2 removes that feature
-and other optional dependency loaders and has been resubmitted. The dashboard
+and other optional dependency loaders. Version 0.1.3 replaces that submission with
+completion-only/zero-minute filtering and a total-minutes field on the PDF. The dashboard
 shows **Pending review**, with automatic publication after approval enabled. Store
 installation will be available after approval. Until then, the link above may
 show an unavailable page; the development ZIP is available below.
@@ -40,7 +41,7 @@ This option works while the Chrome Web Store submission is awaiting approval.
 Use Chrome on a computer; no OpenAI key or build tools are required.
 
 1. [Download the development ZIP](https://github.com/brianclark1184/beanstack-report/archive/refs/heads/codex/unlisted-store.zip),
-   or use a supplied extension package such as `reading-log-beanstack-0.1.2.zip`.
+   or use a supplied extension package such as `reading-log-beanstack-0.1.3.zip`.
 2. Extract **all** files into a permanent folder, such as
    `Documents/Reading Log`. On Windows, right-click the ZIP and choose
    **Extract All**; on macOS, double-click it.
@@ -85,9 +86,12 @@ in Beanstack and click the extension icon again. If several profiles share a rea
 select the desired teacher and class in the editor. Profiles and goals are saved
 locally in Chrome; reading entries stay in the open editor tab's memory.
 
-Each entry remains a separate row. Untimed entries, including Completed events,
-have a dash for minutes and a status next to the title. Adjacent calendar months
-are excluded. Repeated identical IDs are deduplicated; distinct sessions are not.
+Each reading session remains a separate row. Completed events without reading
+time and zero-minute entries are excluded from the preview and PDF. Other untimed
+entries, such as pages, have a dash for minutes and a status next to the title.
+Adjacent calendar months are excluded. Repeated identical IDs are deduplicated;
+distinct sessions are not.
+The PDF also shows the total minutes read for the selected month.
 
 ## Implementation
 

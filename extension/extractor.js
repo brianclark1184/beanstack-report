@@ -33,7 +33,7 @@ export function readSnapshot() {
       const duration = value.match(/^(\d+(?:\.\d+)?)\s+minutes?$/i);
       const hours = value.match(/^(\d+)\s+hours?(?:\s+(\d+)\s+minutes?)?$/i);
       const minutes = duration ? Number(duration[1]) : hours ? Number(hours[1])*60+Number(hours[2]||0) : null;
-      // Preserve non-time entries, such as Completed or pages, without inventing minutes.
+      // Preserve other non-time entries, such as pages, without inventing minutes.
       if (!value) throw new Error('An entry has no readable value. Nothing was exported.');
       const entry = {id:idMatch[2], date, title, minutes, detail: minutes === null ? value : ''};
       if (ids.has(entry.id)) {
@@ -41,6 +41,8 @@ export function readSnapshot() {
         continue;
       }
       ids.set(entry.id, entry);
+      // Completion events do not represent additional reading time.
+      if (minutes === 0 || (minutes === null && /^completed$/i.test(value))) continue;
       entries.push(entry);
     }
   }
