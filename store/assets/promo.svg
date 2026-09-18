@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280" viewBox="0 0 440 280">
+<rect width="440" height="280" fill="#275c4e"/>
+<circle cx="28" cy="40" r="98" fill="#336958"/><circle cx="416" cy="265" r="115" fill="#1d4b40"/>
+<g transform="translate(228 34) rotate(7 74 108)"><rect x="6" y="7" width="146" height="210" rx="8" fill="#153c34"/><rect width="146" height="210" rx="8" fill="#fffef8"/>
+<rect x="20" y="21" width="76" height="8" rx="4" fill="#275c4e"/><path d="M20 44h106M20 62h106" stroke="#c2cbb9" stroke-width="4"/>
+<path d="M20 86h106v100H20zM45 86v100M108 86v100M20 111h106M20 136h106M20 161h106" fill="none" stroke="#7e9a88" stroke-width="2"/>
+<path d="m29 97 3 4 7-8m-10 30 3 4 7-8m-10 29 3 4 7-8" fill="none" stroke="#275c4e" stroke-width="3"/>
+</g>
+<g transform="translate(56 77)"><path d="M0 4h57q23 0 23 20q0-20 23-20h57v120h-57q-23 0-23 14q0-14-23-14H0z" fill="#f4ddb0"/><path d="M80 24v99M18 33h37M18 51h37M18 69h30M104 33h37M104 51h37M104 69h30" stroke="#275c4e" stroke-width="5" stroke-linecap="round"/></g>
+<path d="m210 62 9 9-9 9m-13-9h20" fill="none" stroke="#f4ddb0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -2,10 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {JSDOM} from 'jsdom';
-import {jsPDF} from 'jspdf';
 import {readSnapshot,navigateMonth} from '../extension/extractor.js';
 import {validateExport,validateProfile} from '../extension/model.js';
 import {createPdf} from '../extension/pdf.js';
+
+// Test the browser bundle that actually ships, rather than npm's Node build.
+const pdfDom=new JSDOM('',{runScripts:'outside-only'});
+pdfDom.window.eval(readFileSync(new URL('../extension/vendor/jspdf.local.js',import.meta.url),'utf8'));
+const {jsPDF}=pdfDom.window.jspdf;
 
 const origin='https://school.beanstack.com';
 const reader={id:'123',name:'Sample Student',origin};
