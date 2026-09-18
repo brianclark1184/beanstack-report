@@ -29,6 +29,8 @@ export function createPdf(profile, snapshot, JsPDF, fonts) {
   doc.circle(220,164,6);doc.circle(220,200,6);
   text(`Read ${profile.dailyGoal.toLocaleString('en-US')} minutes each night`,237,169,13);
   text(`Read ${profile.monthlyGoal.toLocaleString('en-US')} minutes by the end of the month`,237,205,12);
+  const totalMinutes = entries.reduce((sum,entry)=>sum+(entry.minutes||0),0);
+  text(`Total Minutes Read: ${totalMinutes.toLocaleString('en-US')}`,237,227,12,'bold');
   const columns=[26,102,421,501,586];
   let cursor=0, page=1;
   do {

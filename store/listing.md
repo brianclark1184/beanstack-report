@@ -6,7 +6,7 @@
 - Price: Free.
 - Language: English (United States).
 - Suggested category: Productivity; choose an appropriate education subcategory if offered.
-- Package: `output/extension/reading-log-beanstack-0.1.2.zip`.
+- Package: `output/extension/reading-log-beanstack-0.1.3.zip`.
 - Icon: `extension/icons/128.png`.
 - Required small promotional tile: `store/assets/promo-440x280.png`.
 - Screenshots: `store/assets/screenshot-profiles-1280x800.png` and
@@ -29,7 +29,8 @@ FEATURES
 - Save multiple Student / Teacher / Class profiles.
 - Remember a Beanstack reader and nightly/monthly goals for each profile.
 - Select a month and read its entries from the Beanstack calendar.
-- Keep one row per entry, including separate sessions for the same book and day.
+- Keep one row per reading session, including separate sessions for the same book and day.
+- Exclude completion-only and zero-minute entries, and show total minutes read on the PDF.
 - Preview or download a Letter-size PDF, with blank rows and continuation pages as needed.
 - Export one selected profile at a time.
 
@@ -45,7 +46,7 @@ GET STARTED
 4. Choose a month and click Read from Beanstack.
 5. Preview or download the PDF.
 
-This is an early beta tested with an English-language school Beanstack calendar. Other layouts may need adjustments. List view and All Titles are not supported. Completed and other entries with no recorded duration show a dash for minutes. The PDF has at least two pages.
+This is an early beta tested with an English-language school Beanstack calendar. Other layouts may need adjustments. List view and All Titles are not supported. Completion-only and zero-minute entries are excluded. Other untimed entries, such as pages, show a dash for minutes. The PDF has at least two pages.
 
 Independent tool; not affiliated with or endorsed by Beanstack. Existing Beanstack access is required. Screenshots use sample data.
 
@@ -96,12 +97,18 @@ The repository contains a local UI harness and synthetic automated tests for dev
 - After Google approves the submission, verify the resulting store URL and unlisted visibility.
 
 Status (September 18, 2026): developer registration paid and activated. Version
-0.1.2 uploaded as item `cfekcfmecbnbmpekmiinanikdcipnkdf`. Store listing, icon,
+0.1.3 uploaded as item `cfekcfmecbnbmpekmiinanikdcipnkdf`. Store listing, icon,
 both screenshots, promotional tile, privacy disclosures, and Unlisted/free
 distribution are saved. Concise reviewer instructions are saved; no test
 credentials have been supplied. Resubmitted for review on September 18, 2026;
 Google confirmed submission and the dashboard shows **Pending review**.
 Automatic publication after passing review is enabled.
+
+The pending 0.1.2 review was canceled and replaced with 0.1.3 on September 18,
+2026. This version excludes completion-only and zero-minute rows and adds Total
+Minutes Read to the PDF. Store description and reviewer instructions were updated.
+All 11 tests passed; the packaged code audit passed, and the new PDF total was
+visually checked for spacing. Visibility remains Unlisted.
 
 Version 0.1.1 was rejected for Blue Argon: the upstream PDF library included an
 unused PDFObject remote-script loader. Version 0.1.2 removes that loader, the

@@ -10,6 +10,7 @@ import {createPdf} from '../extension/pdf.js';
 const pdfDom=new JSDOM('',{runScripts:'outside-only'});
 pdfDom.window.eval(readFileSync(new URL('../extension/vendor/jspdf.local.js',import.meta.url),'utf8'));
 const {jsPDF}=pdfDom.window.jspdf;
+const fonts=Object.fromEntries(['normal','bold'].map(s=>[s,readFileSync(new URL(`../extension/fonts/${s}.ttf`,import.meta.url)).toString('base64')]));
 
 const origin='https://school.beanstack.com';
 const reader={id:'123',name:'Sample Student',origin};
@@ -25,9 +26,37 @@ function context(html=fixture(),url=origin+'/profiles/123/reading_log/dated_read
   const dom=new JSDOM(html,{url,runScripts:'outside-only'});
   return {dom,read:()=>dom.window.eval(`(${readSnapshot.toString()})()`)};
 }
-test('preserves separate sessions, untimed entries, and deduplicates only identical entry IDs',()=>{
-  const {read}=context(fixture(8,{1:item(1,'A &amp; B','10 minutes')+item(2,'A &amp; B','10 minutes')+item(3,'A &amp; B','Completed')+item(1,'A &amp; B','10 minutes'),2:item(4,'Long read','1 hour 5 minutes')}));
+test('preserves separate sessions, page entries, and deduplicates only identical entry IDs',()=>{
+  const {read}=context(fixture(8,{1:item(1,'A &amp; B','10 minutes')+item(2,'A &amp; B','10 minutes')+item(3,'A &amp; B','15 pages')+item(1,'A &amp; B','10 minutes'),2:item(4,'Long read','1 hour 5 minutes')}));
   const data=read();assert.equal(data.entries.length,4);assert.equal(data.entries[0].title,'A & B');assert.equal(data.entries[2].minutes,null);assert.equal(data.entries[3].minutes,65);assert.equal(data.entries.reduce((sum,e)=>sum+(e.minutes||0),0),85);
+});
+
+test('omits completion events and zero-minute rows without losing reading sessions',()=>{
+  const snapshot=context(fixture(9,{
+    1:item(1,'Same book','Completed')+item(2,'Same book','8 minutes')+item(3,'Same book','7 minutes')+item(4,'Zero minutes','0 minutes'),
+    2:item(5,'Completed only',' completed ')+item(6,'Zero hours','0 hours 0 minutes')+item(7,'Short session','0.5 minutes')
+  })).read();
+  assert.deepEqual(Array.from(snapshot.entries,e=>[e.title,e.minutes]),[['Same book',8],['Same book',7],['Short session',0.5]]);
+  const drawn=[];
+  class RecordingPDF extends jsPDF {
+    constructor(options) {
+      super(options);
+      const originalText=this.text;
+      this.text=(value,...args)=>{drawn.push(...(Array.isArray(value)?value:[value]));return originalText.call(this,value,...args);};
+    }
+  }
+  createPdf(profile,snapshot,RecordingPDF,fonts);
+  assert.equal(drawn.filter(text=>text==='Same book').length,2);
+  assert.equal(drawn.filter(text=>text==='Yes').length,3);
+  assert.ok(drawn.includes('Total Minutes Read: 15.5'));
+  assert.ok(!drawn.some(text=>/completed|zero minutes|zero hours/i.test(text)));
+});
+
+test('a month containing only completion events has no exportable rows',()=>{
+  const snapshot=context(fixture(8,{1:item(1,'Finished book','Completed')+item(2,'Zero minutes','0 minutes')})).read();
+  assert.equal(snapshot.entries.length,0);
+  assert.throws(()=>validateExport(profile,snapshot,'2026-08'),/no entries/);
+  assert.throws(context(fixture(8,{1:item(1,'Book','Completed')+item(1,'Book','10 minutes')})).read,/Conflicting/);
 });
 test('rejects incomplete calendars, unrecognized views, and mismatched entry readers',()=>{
   const {dom,read}=context();dom.window.document.querySelector('.reader-log-day').remove();assert.throws(read,/full month/);
@@ -60,7 +89,6 @@ test('month navigation waits for calendar replacement and checks reader',async()
   dom.window.close();
 });
 test('PDF paginates long titles and keeps minimum two pages with embedded fonts',()=>{
-  const fonts=Object.fromEntries(['normal','bold'].map(s=>[s,readFileSync(new URL(`../extension/fonts/${s}.ttf`,import.meta.url)).toString('base64')]));
   const entries=Array.from({length:65},(_,i)=>({id:String(i),date:'2026-08-13',title:i%3===0?'The Extraordinary Adventures of a Very Curious Reader: A Long Book Title That Wraps Across Several Lines':`Book ${i+1} — café`,minutes:i%5===0?null:20,detail:i%5===0?'Completed':''}));
   const doc=createPdf(profile,{month:'2026-08',reader,entries},jsPDF,fonts);
   assert.ok(doc.getNumberOfPages()>=3);

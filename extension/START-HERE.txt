@@ -1,4 +1,4 @@
-READING LOG FOR BEANSTACK — BETA 0.1.2
+READING LOG FOR BEANSTACK — BETA 0.1.3
 
 CHROME WEB STORE INSTALLATION
 Once the unlisted listing is approved, open its shared store link and choose
@@ -9,7 +9,8 @@ Saved profiles will need to be entered again; they do not transfer automatically
 Store listing: https://chromewebstore.google.com/detail/cfekcfmecbnbmpekmiinanikdcipnkdf
 Store installation requires Google's approval. The ZIP below supports local testing.
 Version 0.1.2 removes unused external viewer and optional dependency loaders from
-the bundled PDF library. PDF formatting and reading-log features are unchanged.
+the bundled PDF library. Version 0.1.3 excludes completion-only and zero-minute
+entries and adds Total Minutes Read to the PDF.
 
 UNPACKED INSTALL (Chrome on a personal Windows or Mac computer)
 1. Extract the entire ZIP into a permanent folder, such as Documents/Reading Log.
@@ -39,9 +40,10 @@ If several profiles share the same reader, choose the desired teacher/class.
 It blocks export when the selected profile is linked to a different reader.
 
 WHAT THE LOG CONTAINS
-One row per Beanstack entry, including separate sessions for the same book/day.
-Completion-only and other entries without recorded minutes show a dash and their
-status beside the title. They do not add minutes to the total.
+One row per reading session, including separate sessions for the same book/day.
+Completion-only and zero-minute entries are excluded. Other untimed entries,
+such as pages, show a dash and their status beside the title. They do not add
+minutes to the Total Minutes Read displayed on the PDF.
 The PDF uses Letter paper, editable goals, and at least two pages, with blank
 rows and extra continuation pages as needed. It includes only the selected month.
 
